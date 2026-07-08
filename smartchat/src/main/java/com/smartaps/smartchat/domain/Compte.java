@@ -5,25 +5,27 @@ import lombok.*;
 import java.util.List;
 
 @Entity
-@Getter @Setter @NoArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class Compte {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idCompte; 
+    private Long idCompte;
 
     @Column(unique = true, nullable = false)
-    private String coreAccountId; 
+    private String coreAccountId;
 
     @Column(unique = true, nullable = false)
-    private String numeroCompte; 
+    private String numeroCompte;
 
-    private String typeCompte; 
+    private String typeCompte;
 
     @Builder.Default
-    private String devise = "XOF"; 
+    private String devise = "XOF";
 
     @Builder.Default
     private String statut = "ACTIF";
@@ -37,5 +39,10 @@ public class Compte {
 
     @OneToMany(mappedBy = "compteDestination")
     private List<Transaction> transactionsEntrantes;
+
+    public String getSolde() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getSolde'");
+    }
 
 }

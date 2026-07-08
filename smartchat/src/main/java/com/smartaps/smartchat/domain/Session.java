@@ -6,22 +6,24 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Getter @Setter @NoArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class Session {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idSession; 
+    private Long idSession;
 
-    private String etatCourant; 
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dateCreation; 
+    private String etatCourant;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date dateExpiration; 
+    private Date dateCreation;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateExpiration;
 
     @Builder.Default
     private Boolean active = true;
@@ -30,9 +32,7 @@ public class Session {
     @JoinColumn(name = "id_client", nullable = false)
     private Client client;
 
-    @OneToMany(mappedBy = "session", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "session")
     private List<Message> messages;
-
-
 
 }

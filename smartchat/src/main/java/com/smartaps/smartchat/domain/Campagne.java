@@ -2,10 +2,13 @@ package com.smartaps.smartchat.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.util.Date;
 
 @Entity
-@Getter @Setter @NoArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class Campagne {
@@ -19,7 +22,7 @@ public class Campagne {
     @Column(columnDefinition = "TEXT")
     private String contenu;
 
-    private String typeCampagne; 
+    private String typeCampagne;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreation;
